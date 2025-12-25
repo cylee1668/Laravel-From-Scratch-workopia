@@ -22,9 +22,9 @@ Route::get('/', function () {
 // })->name('jobs');
 
 Route::get('/jobs', function () {
-    $title = "Available Jobs5";
+    $title = "Available Jobs6";
     $jobs = [
-        'Web Developer',
+        'Web Developer1',
         'Database Admin',
         'Software Engineer',
         'System Analyst'
