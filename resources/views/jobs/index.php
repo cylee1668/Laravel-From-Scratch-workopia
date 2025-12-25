@@ -6,9 +6,11 @@
     <title>Document</title>
 </head>
 <body>
-<h1>Web</h1>
-<h1>develepor</h1>
-<h1>youtuber</h1>
-<h1>any</h1>
+<h1><?php echo $title ?></h1>
+<ul>
+    <?php foreach($jobs as $job) : ?>
+        <li><?php echo htmlspecialchars($job, ENT_QUOTES, 'UTF-8'); ?></li>
+    <?php endforeach; ?>
+</ul>
 </body>
 </html>
