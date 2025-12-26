@@ -8,7 +8,7 @@
 </head>
 
 <body>
-    <h1>{{ $title }}</h1>
+    <h1>Available JOB 3</h1>
 
     <ul>
         @forelse($jobs as $job)
