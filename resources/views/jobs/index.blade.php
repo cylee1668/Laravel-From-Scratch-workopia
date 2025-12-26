@@ -11,14 +11,46 @@
     <h1>{{ $title }}</h1>
 
     <ul>
-        @forelse ($jobs as $job)
-        @if($job == 'Database Admin')
-        @continue
-        @endif
+        @forelse($jobs as $job)
+            {{-- <li>
+                {{ $loop->index }} - {{ $job }}
+            </li> --}}
 
-            <li>
-                {{ $job }}
-            </li>
+            {{-- <li>
+                {{ $loop->iteration }} - {{ $job }}
+            </li> --}}
+
+            {{-- <li>
+                {{ $loop->remaining }} - {{ $job }}
+            </li> --}}
+
+            {{-- <li>
+                {{ $loop->count }}  - {{ $job }}
+            </li> --}}
+
+            {{-- @if ($loop->first)
+                <li>First: {{ $job }}</li>
+            @else
+                <li>{{ $job }}</li>
+            @endif --}}
+
+            {{-- @if ($loop->last)
+                <li>Last:{{ $job }}</li>
+            @else
+                <li>{{ $job }}</li>
+            @endif --}}
+
+            {{-- @if ($loop->even)
+                <li>Even: {{ $job }}</li>
+            @else
+                <li>{{ $job }}</li>
+            @endif --}}
+
+            @if ($loop->odd)
+                <li>Odd: {{ $job }}</li>
+            @else
+                <li>{{ $job }}</li>
+            @endif
         @empty
             <p>No Jobs Available2</p>
         @endforelse
