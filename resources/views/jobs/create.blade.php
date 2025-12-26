@@ -6,6 +6,6 @@
     <title>Create New Job</title>
 </head>
 <body>
-    <h1></h1>
+    <h1>Create New Job</h1>
 </body>
 </html>
