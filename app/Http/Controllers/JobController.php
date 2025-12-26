@@ -74,8 +74,5 @@ class JobController extends Controller
     }
 
 
-    public function share()
-    {
-        return "share";
-    }
+
 }

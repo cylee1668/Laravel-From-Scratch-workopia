@@ -10,7 +10,7 @@ use App\Http\Controllers\HomeController;
 
 Route::get('/', [HomeController::class, 'index']);
 
-Route::get('/jobs/share', [JobController::class,'share']);
+
 
 Route::resource('jobs', JobController::class);
 
