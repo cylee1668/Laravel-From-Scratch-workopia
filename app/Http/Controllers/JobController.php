@@ -3,29 +3,32 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\View\View;
+use App\Models\Job;
 
 class JobController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function index(): View
     {
-        $jobs = [
-            'Web Developer',
-            'Databse Admin',
-            'Software Engineer',
-            'System Analyst',
-            'Staff',
-        ];
+        // $jobs = [
+        //     'Web Developer',
+        //     'Databse Admin',
+        //     'Software Engineer',
+        //     'System Analyst',
+        //     'Staff',
+        // ];
 
+        $jobs = Job::all();
         return view('jobs.index', compact('jobs'));
     }
 
     /**
      * Show the form for creating a new resource.
      */
-    public function create()
+    public function create(): View
     {
         return view('jobs.create');
     }
