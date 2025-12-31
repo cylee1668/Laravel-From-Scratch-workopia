@@ -3,8 +3,22 @@
     <h1>Create New Job</h1>
     <form action="/jobs" method="POST">
         @csrf
-        <input type="text" name="title" placeholder="title">
-        <input type="text" name="description" placeholder="description">
-        <button type="submit">Submit</button>
+        <div class="my-5">
+            <input type="text" name="title" placeholder="title" value="{{ old('title') }}">
+            @error('title')
+                <div class="text-red-500 mt2 text-sm">{{ $message }}</div>
+            @enderror
+        </div>
+
+        <div class="mb-5">
+            <input type="text" name="description" placeholder="description" value="{{ old('description') }}">
+            @error('description')
+                <div class="text-red-500 mt2 text-sm">{{ $message }}</div>
+            @enderror
+            <button type="submit">Submit</button>
+        </div>
+
+
+
     </form>
 </x-layout>
