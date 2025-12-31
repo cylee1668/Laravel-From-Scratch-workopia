@@ -1,9 +1,9 @@
 <x-layout>
-    <h1>Available JOB 3</h1>
+    <h1>Available JOB</h1>
 
     <ul>
         @forelse($jobs as $job)
-            <li>{{ $job->title }} - {{ $job->description }}</li>
+            <li><a href="{{ route('jobs.show', $job->id) }}">{{ $job->title }}</a> - {{ $job->description }}</li>
         @empty
             <p>No Jobs Available</p>
         @endforelse
