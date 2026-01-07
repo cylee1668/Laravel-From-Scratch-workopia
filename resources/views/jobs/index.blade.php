@@ -9,4 +9,5 @@
             <p>No Jobs Available</p>
         @endforelse
     </div>
+
 </x-layout>
