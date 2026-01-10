@@ -10,13 +10,13 @@
                 Job Info
             </h2>
 
-            <x-inputs.text id="title" name="title" label="Job Title" placeholder="Software Engineer" />
+            <x-inputs.text id="title" name="title" type="text" label="Job Title" placeholder="Software Engineer" />
 
             <x-inputs.text-area id="description" name="description" label="Job Description"
                 placeholder="We are seeking a skilled and motivated Software Developer to join our growing development team..." />
 
 
-            <x-inputs.text id="salary" name="salary" label="Annual Salary" type="number" placeholder="90000" />
+            <x-inputs.text id="salary" name="salary" type="text" label="Annual Salary" type="number" placeholder="90000" />
 
             <x-inputs.text-area id="requirements" name="requirements" label="Requirements"
                 placeholder="Bachelor's degree in Computer Science" />
@@ -24,7 +24,7 @@
             <x-inputs.text-area id="benefit" name="benefit" label="Benefits"
                 placeholder="Health insurance, 401k, paid time off" />
 
-            <x-inputs.text id="tags" name="tags" label="tags (comma-separated)"
+            <x-inputs.text id="tags" name="tags" type="text" label="tags (comma-separated)"
                 placeholder="development, coding, java, python" />
 
             <x-inputs.select id="job_type" name="job_type" label="Job Type" value="{{ old('job_type') }}"
@@ -40,13 +40,13 @@
 
             <x-inputs.select id="remote" name="remote" label="Remote" :options="[0 => 'No', 1 => 'Yes']" />
 
-            <x-inputs.text id="address" name="address" label="Address" placeholder="123 Main St" />
+            <x-inputs.text id="address" name="address" type="text" label="Address" placeholder="123 Main St" />
 
-            <x-inputs.text id="city" name="city" label="City" placeholder="Albany" />
+            <x-inputs.text id="city" name="city" type="text" label="City" placeholder="Albany" />
 
-            <x-inputs.text id="state" name="state" label="State" placeholder="NY" />
+            <x-inputs.text id="state" name="state" type="text" label="State" placeholder="NY" />
 
-            <x-inputs.text id="zipcode" name="zipcode" label="zipcode" placeholder="02214" />
+            <x-inputs.text id="zipcode" name="zipcode" type="text" label="zipcode" placeholder="02214" />
 
 
 
@@ -54,7 +54,7 @@
                 Company Info
             </h2>
 
-            <x-inputs.text id="company_name" name="company_name" label="Company name"
+            <x-inputs.text id="company_name" type="text" name="company_name" label="Company name"
                 placeholder="Enter Company Name" />
 
             <x-inputs.text-area id="company_description" name="company_description" label="Company Description"
@@ -62,28 +62,18 @@
 
 
 
-            <x-inputs.text id="company_website" name="company_website" label="Company Website"
+            <x-inputs.text id="company_website" type="url" name="company_website" label="Company Website"
                 placeholder="Enter Company website" />
 
-            <x-inputs.text id="contact_phone" name="contact_phone" label="Contact Phone"
+            <x-inputs.text id="contact_phone" type="text" name="contact_phone" label="Contact Phone"
                 placeholder="Enter Contact Phone" />
 
-            <x-inputs.text id="contact_email" name="contact_email" label="Contact email"
+            <x-inputs.text id="contact_email" type="email" name="contact_email" label="Contact email"
                 placeholder="Enter Contact Email" type="email" />
-            <div class="mb-4">
-                <label class="block text-gray-700" for="contact_phone">Contact Phone</label>
-                <input id="contact_phone" type="text" name="contact_phone"
-                    class="w-full px-4 py-2 border rounded focus:outline-none" placeholder="Enter phone" />
-            </div>
 
-            <div class="mb-4">
-                <label class="block text-gray-700" for="contact_email">Contact Email</label>
-                <input id="contact_email" type="email" name="contact_email"
-                    class="w-full px-4 py-2 border rounded focus:outline-none"
-                    placeholder="Email where you want to receive applications" />
-            </div>
 
-            <x-inputs.file id="company_logo" name="company_logo" label="Company Logo"/>
+
+            <x-inputs.file id="company_logo" name="company_logo" label="Company Logo" type="url"/>
 
             <button type="submit"
                 class="w-full bg-green-500 hover:bg-green-600 text-white px-4 py-2 my-3 rounded focus:outline-none">
