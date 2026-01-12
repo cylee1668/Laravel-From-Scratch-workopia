@@ -29,7 +29,7 @@
 
             <x-inputs.select id="job_type" name="job_type" label="Job Type" value="{{ old('job_type') }}"
                 :options="[
-                    'Full-time' => 'Full-time',
+                    'Full-Time' => 'Full-Time',
                     'Part-Time' => 'Part-Time',
                     'Contract' => 'Contract',
                     'Temporary' => 'Temporary',
