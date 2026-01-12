@@ -41,15 +41,8 @@ class JobController extends Controller
      */
     public function store(Request $request): RedirectResponse
     {
-        // $title = $request->input('title');
-        // $description = $request->input('description');
 
-        // return "title: $title, description: $description";
-
-        // $title = $request->input('title');
-        // $description = $request->input('description');
-//
-        $validateData = $request->validate([
+        $validatedData = $request->validate([
            'title' => 'required|string|max:255',
            'description' => 'required|string',
            'salary' => 'required|integer',
@@ -57,17 +50,18 @@ class JobController extends Controller
            'job_type' => 'required|string',
            'requirements' => 'nullable|string',
            'remote' => 'required|boolean',
-           'benefit' => 'nullable|string',
+           'benefits' => 'nullable|string',
            'address' => 'nullable|string',
            'city' => 'required|string',
            'state' => 'required|string',
            'zipcode' => 'nullable|string',
            'contact_email' => 'required|string',
            'contact_phone' => 'nullable|string',
-           'contact_name' => 'required|string',
-           'contact_description' => 'nullable|string',
+           'company_name' => 'required|string',
+           'company_description' => 'nullable|string',
            'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
            'company_website' => 'nullable'
+
         ]);
 
         // Hardcoded user ID
@@ -75,7 +69,7 @@ class JobController extends Controller
         $validatedData['user_id'] = 1;
 
 
-        Job::created($validatedData);
+        Job::create($validatedData);
 
         return redirect()->route('jobs.index')->with('success', 'Job Listing created successfully!');
     }
