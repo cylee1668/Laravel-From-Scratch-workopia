@@ -10,8 +10,8 @@
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
         <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-
-    <title>{{ $title ?? 'Workopia | Finad and list Jobs' }}</title>
+        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.min.js"></script>
+    <title>{{ $title ?? 'Workopia | Find and list Jobs' }}</title>
 </head>
 
 <body class="bg-gray-100">
