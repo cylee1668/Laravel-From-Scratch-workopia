@@ -38,7 +38,7 @@
                         <li class="mb-2">
                             <strong>Site Location:</strong> {{ $job->city }}, {{ $job->state }}
                         </li>
-                        @if ($jobs->tags)
+                        @if ($job->tags)
                             <li class="mb-2">
                                 <strong>Tags:</strong>{{ ucwords(str_replace(',', ', ', $job->tags)) }}
                             </li>
@@ -86,8 +86,8 @@
             <h3 class="text-xl text-center mb-4 font-bold">
                 Company Info
             </h3>
-            @if ($jobs->company_logo)
-                <img src="/images/{{ $job->company_logo }}" alt="Ad" class="w-full rounded-lg mb-4 m-auto" />
+            @if ($job->company_logo)
+                <img src="/storage/{{ $job->company_logo }}" alt="Ad" class="w-full rounded-lg mb-4 m-auto" />
             @endif
             <h4 class="text-lg font-bold">{{ $job->company_name }}</h4>
             @if ($job->company_description)
