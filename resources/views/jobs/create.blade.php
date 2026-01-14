@@ -16,7 +16,7 @@
                 placeholder="We are seeking a skilled and motivated Software Developer to join our growing development team..." />
 
 
-            <x-inputs.text id="salary" name="salary" type="text" label="Annual Salary" type="number" placeholder="90000" />
+            <x-inputs.text id="salary" name="salary" label="Annual Salary" type="number" placeholder="90000" />
 
             <x-inputs.text-area id="requirements" name="requirements" label="Requirements"
                 placeholder="Bachelor's degree in Computer Science" />

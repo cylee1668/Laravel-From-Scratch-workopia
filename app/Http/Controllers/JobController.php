@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
+use Illuminate\Support\Facades\Storage;
 use phpDocumentor\Reflection\Types\String_;
 
 class JobController extends Controller
@@ -43,24 +44,24 @@ class JobController extends Controller
     {
 
         $validatedData = $request->validate([
-           'title' => 'required|string|max:255',
-           'description' => 'required|string',
-           'salary' => 'required|integer',
-           'tags' => 'nullable|string',
-           'job_type' => 'required|string',
-           'requirements' => 'nullable|string',
-           'remote' => 'required|boolean',
-           'benefits' => 'nullable|string',
-           'address' => 'nullable|string',
-           'city' => 'required|string',
-           'state' => 'required|string',
-           'zipcode' => 'nullable|string',
-           'contact_email' => 'required|string',
-           'contact_phone' => 'nullable|string',
-           'company_name' => 'required|string',
-           'company_description' => 'nullable|string',
-           'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
-           'company_website' => 'nullable'
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'salary' => 'required|integer',
+            'tags' => 'nullable|string',
+            'job_type' => 'required|string',
+            'requirements' => 'nullable|string',
+            'remote' => 'required|boolean',
+            'benefits' => 'nullable|string',
+            'address' => 'nullable|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zipcode' => 'nullable|string',
+            'contact_email' => 'required|string',
+            'contact_phone' => 'nullable|string',
+            'company_name' => 'required|string',
+            'company_description' => 'nullable|string',
+            'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'company_website' => 'nullable'
 
         ]);
 
@@ -71,12 +72,12 @@ class JobController extends Controller
 
 
         //check for image
-        if($request->hasFile('company_logo')) {
+        if ($request->hasFile('company_logo')) {
             //Store the file and get path
             $path = $request->file('company_logo')->store('logos', 'public');
 
             //Add path to validated data
-            $validatedData['company_logo'] =$path;
+            $validatedData['company_logo'] = $path;
         }
 
 
@@ -90,7 +91,7 @@ class JobController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Job $job): view
+    public function show(Job $job): View
     {
         return view('jobs.show')->with('job', $job);
     }
@@ -98,17 +99,59 @@ class JobController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(string $id)
+    public function edit(Job $job): View
     {
-        //
+        return view('jobs.edit')->with('job', $job);
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(Request $request, Job $job): string
     {
-        //
+        $validatedData = $request->validate([
+            'title' => 'required|string|max:255',
+            'description' => 'required|string',
+            'salary' => 'required|integer',
+            'tags' => 'nullable|string',
+            'job_type' => 'required|string',
+            'requirements' => 'nullable|string',
+            'remote' => 'required|boolean',
+            'benefits' => 'nullable|string',
+            'address' => 'nullable|string',
+            'city' => 'required|string',
+            'state' => 'required|string',
+            'zipcode' => 'nullable|string',
+            'contact_email' => 'required|string',
+            'contact_phone' => 'nullable|string',
+            'company_name' => 'required|string',
+            'company_description' => 'nullable|string',
+            'company_logo' => 'nullable|image|mimes:jpeg,jpg,png,gif|max:2048',
+            'company_website' => 'nullable'
+
+        ]);
+
+
+
+
+        //check for image
+        if ($request->hasFile('company_logo')) {
+            //Delete old logo
+            Storage::delete('public/logos/' . basename($job->company_logo));
+
+            //Store the file and get path
+            $path = $request->file('company_logo')->store('logos', 'public');
+
+            //Add path to validated data
+            $validatedData['company_logo'] = $path;
+        }
+
+
+
+        //Submit to database
+        $job->update($validatedData);
+
+        return redirect()->route('jobs.index')->with('success', 'Job Listing updateed successfully!');
     }
 
     /**
@@ -118,7 +161,4 @@ class JobController extends Controller
     {
         //
     }
-
-
-
 }
