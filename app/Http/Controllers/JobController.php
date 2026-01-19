@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
+
 use App\Models\Job;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use phpDocumentor\Reflection\Types\String_;
+
+
 
 class JobController extends Controller
 {
@@ -63,7 +66,7 @@ class JobController extends Controller
 
         // Hardcoded user ID
 
-        $validatedData['user_id'] = 1;
+        $validatedData['user_id'] = auth()->user()->id;
 
 
 
