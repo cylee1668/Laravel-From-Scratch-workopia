@@ -6,11 +6,12 @@ use Illuminate\Http\Request;
 use Illuminate\View\View;
 
 
-use Illuminate\Http\RedirectResponse;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
 use App\Models\Job;
+use Illuminate\Http\RedirectResponse;
 use phpDocumentor\Reflection\Types\String_;
 
 
@@ -167,10 +168,19 @@ class JobController extends Controller
         //If Logo, then delete it
         if ($job->company_logo) {
             Storage::delete('public/logos/' . $job->company_logo);
-
-            $job->delete();
-
-            return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
         }
+
+        $job->delete();
+
+        //Check if request came from the dashboard
+        if (request()->query('from') == 'dashboard') {
+            return redirect()->route('dashboard')->with('success', 'Job listing deleted successfully!');
+        }
+
+
+
+
+        return redirect()->route('jobs.index')->with('success', 'Job listing deleted successfully!');
     }
+
 }
