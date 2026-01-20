@@ -1,0 +1,4 @@
+<x-layout>
+    <h1>Dashboard</h1>
+    <p>{{$user->name}}</p>
+</x-layout>
