@@ -4,9 +4,6 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-
-
-
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
@@ -26,7 +23,7 @@ class JobController extends Controller
     {
 
 
-        $jobs = Job::paginate(3);
+        $jobs = Job::latest()->paginate(6);
 
         return view('jobs.index')->with('jobs', $jobs);
     }
