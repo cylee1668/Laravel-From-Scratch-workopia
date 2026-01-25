@@ -5,30 +5,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    {{-- <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script> --}}
+    <!-- Tailwind CSS v2 CDN (非官方，僅供測試) -->
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css"
         integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
-        <link rel="stylesheet" href="{{ asset('css/style.css') }}">
-        <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.min.js"></script>
+    <link rel="stylesheet" href="{{ asset('css/style.css') }}">
+    {{-- <script defer src="https://cdnjs.cloudflare.com/ajax/libs/alpinejs/2.3.0/alpine.min.js"></script> --}}
+    <script src="https://unpkg.com/alpinejs" defer></script>
     <title>{{ $title ?? 'Workopia | Find and list Jobs' }}</title>
 </head>
 
 <body class="bg-gray-100">
 
     <x-header />
-    @if(request()->is('/'))
-    <x-hero title="Hello" />
-    <x-top-banner />
+    @if (request()->is('/'))
+        <x-hero title="Hello" />
+        <x-top-banner />
     @endif
     <main class="container mx-auto p-4 mt-4">
         {{-- Display alert messages --}}
 
         @if (session('success'))
-        <x-alert type="success" message="{{ session('success') }}" />
+            <x-alert type="success" message="{{ session('success') }}" />
         @endif
         @if (session('error'))
-        <x-alert type="error" message="{{ session('error') }}" />
+            <x-alert type="error" message="{{ session('error') }}" />
         @endif
 
         {{ $slot }}
